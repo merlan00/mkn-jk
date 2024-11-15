@@ -1,0 +1,114 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Responsive solutions HTML Template Live Demo</title> 
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            height: 100vh; 
+        } 
+        .page-preview { 
+            height: 100%; 
+        } 
+        .page-preview-header { 
+            background: #f2f2f2; 
+            height: 70px; 
+            text-align: center; 
+        } 
+        .page-preview-header > button { 
+            display: inline-block; 
+            margin-top: 15px; 
+            padding: 10px 20px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        } 
+        .page-preview-header > button.active { 
+            background-color: #0056b3; 
+        } 
+        .page-preview-body { 
+            height: calc(100% - 70px); 
+            overflow: hidden; 
+            text-align: center; 
+        } 
+        .page-preview-body iframe { 
+            border: none; 
+            display: inline-block; 
+            height: 100%; 
+            width: 100%; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <div class="page-preview"> 
+        <div class="page-preview-header"> 
+            <button id="previewDesktopBtn" data-preview-size="100%">Desktop</button> 
+            <button id="previewLaptopBtn" data-preview-size="1040px">Laptop</button> 
+            <button id="previewTabletBtn" data-preview-size="820px">Tablet</button> 
+            <button id="previewPhoneHorizontalBtn" data-preview-size="640px">Phone (Horizontal)</button> 
+            <button id="previewPhoneBtn" data-preview-size="440px">Phone</button> 
+        </div> 
+        <div class="page-preview-body"> 
+            <iframe id="livePreviewFrame" src="https://website460597.nicepage.io/Page-2.html?version=47534682-0e46-43d9-9c3c-bcc57fd2794d"></iframe> 
+        </div> 
+    </div> 
+    <script> 
+        function setActiveResponsiveButton(btn) { 
+            document.querySelectorAll(".page-preview-header > button").forEach(function(button) { 
+                button.classList.remove("active"); 
+            }); 
+            btn.classList.add("active"); 
+        } 
+ 
+        function detectActiveResponsiveButton() { 
+            var d = 'desktop'; 
+            document.getElementById("preview" + d.charAt(0).toUpperCase() + d.substr(1) + "Btn").click(); 
+        } 
+ 
+        function setLivePreviewFrameSize(srcEl) { 
+            var attr = srcEl.getAttribute("data-preview-size"); 
+            document.getElementById('livePreviewFrame').style.width = attr.indexOf("%") !== -1 ? attr : attr + "px"; 
+        } 
+ 
+        document.addEventListener("DOMContentLoaded", function() { 
+            document.getElementById('previewDesktopBtn').addEventListener("click", function (e) { 
+                setLivePreviewFrameSize(this); 
+                setActiveResponsiveButton(this); 
+                e.preventDefault(); 
+            }); 
+ 
+            document.getElementById('previewLaptopBtn').addEventListener("click", function (e) { 
+                setLivePreviewFrameSize(this); 
+                setActiveResponsiveButton(this); 
+                e.preventDefault(); 
+            }); 
+ 
+            document.getElementById('previewTabletBtn').addEventListener("click", function (e) { 
+                setLivePreviewFrameSize(this); 
+                setActiveResponsiveButton(this); 
+                e.preventDefault(); 
+            }); 
+ 
+            document.getElementById('previewPhoneHorizontalBtn').addEventListener("click", function (e) { 
+                setLivePreviewFrameSize(this); 
+                setActiveResponsiveButton(this); 
+                e.preventDefault(); 
+            }); 
+ 
+            document.getElementById('previewPhoneBtn').addEventListener("click", function (e) { 
+                setLivePreviewFrameSize(this);
+setActiveResponsiveButton(this); 
+                e.preventDefault(); 
+            }); 
+ 
+            detectActiveResponsiveButton(); 
+        }); 
+    </script> 
+</body> 
+</html>
